@@ -12,6 +12,7 @@ def primes(N):
 
 
 if __name__ == "__main__":
-import sys
-N = int(sys.argv[1]) # read in from command-line
+	import sys
+	N = int(sys.argv[1]) # read in from command-line
+
 print(primes(N))
