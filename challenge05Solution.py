@@ -18,7 +18,7 @@ class Polynomial(object):
 			del coeffs[-1]
 
 		self.coeffs = coeffs
-		self.degree = len(coeffs) + 1
+		self.degree = len(coeffs) - 1
 
 	def __add__(self, p):
 		pCoeffs = p.coeffs
