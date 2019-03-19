@@ -109,11 +109,8 @@ class Polynomial(object):
 
 		return Polynomial(newCoeffs)
 
-p = Polynomial([2, 4, 3])
-q = Polynomial([9, 7, 8, 3, 4])
-s = p.multiply(q)
-print(s.coeffs)
-
+p = Polynomial([4, 4, 1])
+print(p.roots(0.01))
 
 
 
