@@ -88,7 +88,7 @@ class Polynomial(object):
 				newton = p / pDashed
 
 				offset = newton / (1 - newton * sumDiff)
-				offests[i] = offset
+				offsets[i] = offset
 
 				approx = root - offset
 
