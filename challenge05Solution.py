@@ -90,7 +90,7 @@ class Polynomial(object):
 				offset = newton / (1 - newton * sumDiff)
 				offsets[i] = offset
 
-				approx = root - offset
+				approx[i] = root - offset
 
 		return approx
 				
@@ -108,10 +108,6 @@ class Polynomial(object):
 						newCoeffs[k] += coeffs[i] * qCoeffs[j]
 
 		return Polynomial(newCoeffs)
-
-p = Polynomial([4, 4, 1])
-print(p.roots(0.01))
-
 
 
 
