@@ -77,40 +77,59 @@ def neighbours(M, pos):
 
 	neighbourSum = 0
 
-	row = pos[0]
-	col = pos[1]
+	# row = pos[0]
+	# col = pos[1]
 
-	# Check the row above (making sure the element is not
-	# on the top row)
-	if not row == 0:
-		if not col == 0:
-			if M[row - 1][col - 1] == 1:
-				neighbourSum += 1
-		if M[row - 1][col] == 1:
-			neighbourSum += 1
-		if not col == M.shape[1] - 1:
-			if M[row - 1][col + 1] == 1:
-				neighbourSum += 1
+	# # Check the row above (making sure the element is not
+	# # on the top row)
+	# if not row == 0:
+	# 	if not col == 0:
+	# 		if M[row - 1][col - 1] == 1:
+	# 			neighbourSum += 1
+	# 	if M[row - 1][col] == 1:
+	# 		neighbourSum += 1
+	# 	if not col == M.shape[1] - 1:
+	# 		if M[row - 1][col + 1] == 1:
+	# 			neighbourSum += 1
 
-	# Check the row the element is on
-	if not col == 0:
-		if M[row][col - 1] == 1:
-			neighbourSum += 1
-	if not col == M.shape[1] - 1:
-		if M[row][col + 1] == 1:
-			neighbourSum += 1
+	# # Check the row the element is on
+	# if not col == 0:
+	# 	if M[row][col - 1] == 1:
+	# 		neighbourSum += 1
+	# if not col == M.shape[1] - 1:
+	# 	if M[row][col + 1] == 1:
+	# 		neighbourSum += 1
 
-	# Check the row below (making sure the element is not
-	# on the bottom row)
-	if not row == M.shape[0] - 1:
-		if not col == 0:
-			if M[row + 1][col - 1] == 1:
-				neighbourSum += 1
-		if M[row + 1][col] == 1:
-			neighbourSum += 1
-		if not col == M.shape[1] - 1:
-			if M[row + 1][col + 1] == 1:
-				neighbourSum += 1
+	# # Check the row below (making sure the element is not
+	# # on the bottom row)
+	# if not row == M.shape[0] - 1:
+	# 	if not col == 0:
+	# 		if M[row + 1][col - 1] == 1:
+	# 			neighbourSum += 1
+	# 	if M[row + 1][col] == 1:
+	# 		neighbourSum += 1
+	# 	if not col == M.shape[1] - 1:
+	# 		if M[row + 1][col + 1] == 1:
+	# 			neighbourSum += 1
+
+	row = pos[0] + 1
+	col = pos[1] + 1
+
+	M = np.insert(M, 0, 0, axis=1)
+	M = np.insert(M, M.shape[1], 0, axis=1)
+
+	zeros = np.zeros((1, M.shape[1]), dtype=int)
+
+	M = np.concatenate((zeros, M))
+	M = np.concatenate((M, zeros))
+
+	m = M[row - 1:row + 2, col - 1:col + 2]
+
+	m[1][1] = 0
+
+	for ro in m:
+		for ele in ro:
+			neighbourSum += ele
 
 	return neighbourSum
 
@@ -163,6 +182,8 @@ def iterate(M):
 inputMatrix = np.array(json.loads(sys.argv[1]))
 
 GameOfLife(inputMatrix)
+
+
 
 
 
